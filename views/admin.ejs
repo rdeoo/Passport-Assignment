@@ -1,0 +1,20 @@
+
+<h1 class="mt-4">Dashboard</h1>
+<p class="lead mb-3">Welcome <%= user.name %></p><br />
+
+<p class="">Current Active Sessions (may need to refresh after revoking):</p>
+<ul>
+    <% sessionInfo.forEach(session => { %>
+      <li>
+        <strong>Session ID:</strong> <%= session.sessionID %>
+        <br>
+        <strong>User ID:</strong> <%= session.userID %>
+        <br>
+        <form action="/admin/sessions/delete/<%= session.sessionID %>" method="POST">
+            <button type="submit">Revoke Session</button>
+        </form>
+      </li>
+      <br>
+    <% }) %>
+  </ul>
+<a href="/auth/logout" class="btn btn-secondary">Logout</a>
